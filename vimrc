@@ -1,4 +1,4 @@
-
+set nocompatible
 
 "Vundle setup
 filetype off
@@ -10,7 +10,9 @@ Plugin 'gmarik/vundle'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Shougo/neocomplete'
 Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'Lokaltog/vim-easymotion'
 
 "Vim-scripts
 "Plugin 'FuzzyFinder'
@@ -22,20 +24,28 @@ call vundle#end()
 filetype plugin indent on
 
 "Settings
-"Gnome-terminal werkaround
+"Solarized
 if $COLORTERM == 'gnome-terminal'
     set t_Co=256 
     let g:solarized_termcolors=256
+else
+    set t_Co=8
+    let g:solarized_termcolors=8
 endif
-"Solarized
 syntax on
-set background=dark
+if strftime("%H") >= 5 && strftime("%H") <= 18
+    set background=light
+else
+    set background=dark
+endif
 colorscheme solarized
 
 "Neocomplete
 let g:neocomplete#enable_at_startup = 1
 "Syntastic
-let g:synstastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_html_checkers = ['w3']
+
 "Powerline
 "set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim/
 set laststatus=2
