@@ -45,6 +45,8 @@ let g:neocomplete#enable_at_startup = 1
 "Syntastic
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_html_checkers = ['w3']
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++ -lc++abi -Wall'
 
 "Powerline
 "set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim/
